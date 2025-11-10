@@ -35,7 +35,7 @@ module.exports = {
 🔹 Category: ${c.category || "Uncategorized"}
 
 ✦━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━✦
-💫 Type ${prefix}help to view all commands
+💫 Type ${prefix}help commands name to view cmd info
 ✦━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━✦
 ✦ © 𝓜𝓮𝓱𝓮𝓻𝓪𝔃 • 𝓢𝓽𝔂𝓵𝓮 ✦
 `;
