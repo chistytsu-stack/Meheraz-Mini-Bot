@@ -1,0 +1,56 @@
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+//  🤖 Meheraz Bot - Welcome Image Generator
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+
+const fs = require("fs");
+const { createCanvas, loadImage, registerFont } = require("canvas");
+
+// Font register
+registerFont("./assets/fonts/Meheraz-Regular.ttf", { family: "Meheraz" });
+registerFont("./assets/fonts/Mirai-Soft.otf", { family: "Mirai" });
+
+// Canvas setup
+const width = 1000;
+const height = 500;
+const canvas = createCanvas(width, height);
+const ctx = canvas.getContext("2d");
+
+// Background gradient
+const gradient = ctx.createLinearGradient(0, 0, width, height);
+gradient.addColorStop(0, "#1a1a40");
+gradient.addColorStop(1, "#4b0082");
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, width, height);
+
+// Glow border
+ctx.shadowColor = "#8A2BE2";
+ctx.shadowBlur = 25;
+ctx.strokeStyle = "#b266ff";
+ctx.lineWidth = 5;
+ctx.strokeRect(20, 20, width - 40, height - 40);
+
+// Welcome text
+ctx.shadowColor = "#00ffff";
+ctx.shadowBlur = 15;
+ctx.font = "bold 55px Meheraz";
+ctx.fillStyle = "#ffffff";
+ctx.textAlign = "center";
+ctx.fillText("✦ 𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝑻𝒐 𝑴𝒆𝒉𝒆𝒓𝒂𝒛 𝑩𝒐𝒕 ✦", width / 2, height / 2 - 40);
+
+// Sub text
+ctx.font = "30px Mirai";
+ctx.shadowBlur = 0;
+ctx.fillStyle = "#b3b3ff";
+ctx.fillText("💫 Let’s make your chat magical!", width / 2, height / 2 + 40);
+
+// Credit text
+ctx.font = "20px Mirai";
+ctx.fillStyle = "#9999ff";
+ctx.fillText("⚡ Powered by Meheraz", width / 2, height - 40);
+
+// Save file
+const buffer = canvas.toBuffer("image/png");
+fs.mkdirSync("./assets/images", { recursive: true });
+fs.writeFileSync("./assets/images/welcome.png", buffer);
+
+console.log("✅ welcome.png generated successfully!");
