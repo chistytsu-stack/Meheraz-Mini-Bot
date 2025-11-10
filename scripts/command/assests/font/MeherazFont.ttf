@@ -1,0 +1,27 @@
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+// 🅰️ Meheraz Bot - Font Auto Downloader
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+
+const fs = require("fs");
+const https = require("https");
+
+const dir = "./assets/fonts";
+fs.mkdirSync(dir, { recursive: true });
+
+// Example free elegant font (Open Sans or Poppins)
+const fontUrl = "https://github.com/google/fonts/raw/main/ofl/poppins/Poppins-Regular.ttf";
+const outputPath = `${dir}/MeherazFont.ttf`;
+
+console.log("⏳ Downloading MeherazFont.ttf ...");
+
+https.get(fontUrl, (res) => {
+  const fileStream = fs.createWriteStream(outputPath);
+  res.pipe(fileStream);
+  fileStream.on("finish", () => {
+    fileStream.close();
+    console.log("✅ MeherazFont.ttf downloaded successfully!");
+    console.log("📁 Saved to ./assets/fonts/");
+  });
+}).on("error", (err) => {
+  console.error("❌ Font download failed:", err.message);
+});
