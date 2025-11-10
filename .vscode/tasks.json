@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Background Generator",
+      "type": "shell",
+      "command": "node make_background.js",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run All Asset Generators",
+      "type": "shell",
+      "command": "node AutoAssetsGenerator.js",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
