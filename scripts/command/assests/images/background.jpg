@@ -1,0 +1,96 @@
+/**
+ * make_images.js
+ * Creates:
+ *  ├─ logo.png
+ *  ├─ banner.gif
+ *  ├─ background.jpg
+ *  ├─ welcome.png
+ *  └─ goodbye.png
+ *
+ * Style: Mirai × Meheraz 💫
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { createCanvas, loadImage, registerFont } = require('canvas');
+const GIFEncoder = require('gifencoder');
+
+// 🗂️ Output Directory
+const OUT_DIR = path.join(__dirname, 'assets', 'images');
+fs.mkdirSync(OUT_DIR, { recursive: true });
+
+// 🩶 Font (optional)
+const FONT_PATH = path.join(__dirname, 'assets', 'fonts', 'Meheraz-Regular.ttf');
+if (fs.existsSync(FONT_PATH)) {
+  registerFont(FONT_PATH, { family: 'Meheraz' });
+  console.log('✅ Custom font loaded');
+}
+
+// 🌈 Helper Functions
+function savePNG(canvas, filename) {
+  const out = fs.createWriteStream(path.join(OUT_DIR, filename));
+  const stream = canvas.createPNGStream();
+  stream.pipe(out);
+  return new Promise(res => out.on('finish', res));
+}
+
+function saveJPG(canvas, filename, quality = 0.9) {
+  const outPath = path.join(OUT_DIR, filename);
+  const buffer = canvas.toBuffer('image/jpeg', { quality });
+  fs.writeFileSync(outPath, buffer);
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━
+// 🔹 1. logo.png
+// ━━━━━━━━━━━━━━━━━━━━━━━━
+async function makeLogo() {
+  const W = 1200, H = 420;
+  const canvas = createCanvas(W, H);
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0, 0, W, H);
+  const grad = ctx.createLinearGradient(0, 0, W, 0);
+  grad.addColorStop(0, '#00d4ff');
+  grad.addColorStop(1, '#00ffa3');
+
+  ctx.shadowColor = '#00e5ff';
+  ctx.shadowBlur = 60;
+  ctx.textAlign = 'center';
+  ctx.fillStyle = grad;
+  ctx.font = fs.existsSync(FONT_PATH) ? 'bold 120px Meheraz' : 'bold 120px Sans-serif';
+  ctx.fillText('Meheraz Bot', W / 2, H / 2 - 20);
+
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+  ctx.strokeText('Meheraz Bot', W / 2, H / 2 - 20);
+
+  ctx.shadowBlur = 20;
+  ctx.font = fs.existsSync(FONT_PATH) ? '400 42px Meheraz' : '400 42px Sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  ctx.fillText('⚡ Powered by Meheraz', W / 2, H / 2 + 70);
+
+  await savePNG(canvas, 'logo.png');
+  console.log('✅ logo.png created');
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━
+// 🔹 2. background.jpg
+// ━━━━━━━━━━━━━━━━━━━━━━━━
+async function makeBackground() {
+  const W = 1600, H = 900;
+  const canvas = createCanvas(W, H);
+  const ctx = canvas.getContext('2d');
+
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, '#001021');
+  g.addColorStop(0.5, '#001a2b');
+  g.addColorStop(1, '#002b5b');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+
+  for (let i = 0; i < 160; i++) {
+    const x = Math.random() * W;
+    const y = Math.random() * H;
+    const r = Math.random() * 2.5 + 0.5;
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(160,255,255,${Math
