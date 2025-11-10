@@ -1,0 +1,28 @@
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+// 🎵 Meheraz Bot - Welcome Audio Generator
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+
+const fs = require("fs");
+const path = require("path");
+const gtts = require("node-gtts")("en");
+
+// Folder setup
+const dir = "./assets/audio";
+fs.mkdirSync(dir, { recursive: true });
+
+// Message text (you can change this freely)
+const welcomeMessage = `
+✦━━━━━━━━━━━━━━━━━━━━━✦
+Welcome to Meheraz Bot Zone 💫
+Let's make your chat magical!
+⚡ Powered by Meheraz
+✦━━━━━━━━━━━━━━━━━━━━━✦
+`;
+
+// Output file path
+const outputPath = path.join(dir, "welcome.mp3");
+
+// Convert text to audio (Text → Speech)
+gtts.save(outputPath, welcomeMessage, function () {
+  console.log("✅ welcome.mp3 generated successfully!");
+});
