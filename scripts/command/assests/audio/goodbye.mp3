@@ -1,0 +1,34 @@
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+// 🎵 Meheraz Bot - Goodbye Audio Generator
+// ✦━━━━━━━━━━━━━━━━━━━━━✦
+
+const fs = require("fs");
+const path = require("path");
+const gtts = require("node-gtts")("en"); // English voice (you can change to "bn" for Bangla)
+
+//━━━━━━━━━━━━━━━━━━━━━
+// 📁 Folder Setup
+//━━━━━━━━━━━━━━━━━━━━━
+const dir = "./assets/audio";
+fs.mkdirSync(dir, { recursive: true });
+
+//━━━━━━━━━━━━━━━━━━━━━
+// 🎧 Voice Message Content
+//━━━━━━━━━━━━━━━━━━━━━
+const goodbyeMessage = `
+✦━━━━━━━━━━━━━━━━━━━━━✦
+Goodbye from Meheraz Bot 💫
+We’ll miss your vibe!
+Stay safe and come back soon 💜
+⚡ Powered by Meheraz
+✦━━━━━━━━━━━━━━━━━━━━━✦
+`;
+
+//━━━━━━━━━━━━━━━━━━━━━
+// 💾 Save Audio File
+//━━━━━━━━━━━━━━━━━━━━━
+const outputPath = path.join(dir, "goodbye.mp3");
+
+gtts.save(outputPath, goodbyeMessage, function () {
+  console.log("✅ goodbye.mp3 generated successfully!");
+});
