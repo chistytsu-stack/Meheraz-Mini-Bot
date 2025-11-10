@@ -1,0 +1,14 @@
+{
+  "latest": "1.1.0",
+  "previous": "1.0.0",
+  "releaseDate": "2025-11-10",
+  "changelog": [
+    "🚀 Added auto-restart after update",
+    "💫 Improved Meheraz-Style console animation",
+    "⚡ Optimized update.js and updater.js performance",
+    "🧩 Enhanced utils.js logging and error handling"
+  ],
+  "updateURL": "https://raw.githubusercontent.com/meheraz-bot/main/versions.json",
+  "developer": "Meheraz Islam Chishti",
+  "poweredBy": "⚡ Powered by Meheraz 💫"
+}
