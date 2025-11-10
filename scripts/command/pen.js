@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = {
   config: {
     name: "pending",
-    aliases: ["pend"],
+    aliases: ["pen", "pending"],
     version: "2.0",
     author: "Meheraz Islam (Chisty)",
     countDown: 5,
