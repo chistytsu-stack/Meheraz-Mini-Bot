@@ -1,0 +1,78 @@
+/**
+ * make_banner.js
+ * Generates: assets/images/banner.gif
+ * Style: Mirai ✦ Meheraz Style ✨
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { createCanvas, registerFont } = require('canvas');
+const GIFEncoder = require('gifencoder');
+
+// 🗂️ Output Folder
+const OUT_DIR = path.join(__dirname, 'assets', 'images');
+fs.mkdirSync(OUT_DIR, { recursive: true });
+
+// 🩶 Font Register (if exists)
+const FONT_PATH = path.join(__dirname, 'assets', 'fonts', 'Meheraz-Regular.ttf');
+if (fs.existsSync(FONT_PATH)) {
+  registerFont(FONT_PATH, { family: 'Meheraz' });
+  console.log('✅ Custom font loaded');
+}
+
+// ⚡ Banner Properties
+const W = 900, H = 130;
+const encoder = new GIFEncoder(W, H);
+const outPath = path.join(OUT_DIR, 'banner.gif');
+const stream = fs.createWriteStream(outPath);
+encoder.createReadStream().pipe(stream);
+
+encoder.start();
+encoder.setRepeat(0);
+encoder.setDelay(60);
+encoder.setQuality(10);
+
+const canvas = createCanvas(W, H);
+const ctx = canvas.getContext('2d');
+
+// 🔮 Banner Text
+const text = '⚡ Powered by Meheraz • Mirai Bot System • Glowing Animation ✦';
+ctx.font = fs.existsSync(FONT_PATH)
+  ? 'bold 46px Meheraz'
+  : 'bold 46px Sans-serif';
+
+const textWidth = ctx.measureText(text).width;
+const totalMove = textWidth + W;
+const frames = 100;
+
+// 🎬 Create Frames
+for (let i = 0; i < frames; i++) {
+  ctx.clearRect(0, 0, W, H);
+
+  // Background gradient
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#001a2b');
+  bg.addColorStop(1, '#003b5c');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Text glow
+  ctx.shadowColor = '#00e6ff';
+  ctx.shadowBlur = 30;
+
+  // Text color gradient
+  const grad = ctx.createLinearGradient(0, 0, W, 0);
+  grad.addColorStop(0, '#00eaff');
+  grad.addColorStop(1, '#00ff9d');
+  ctx.fillStyle = grad;
+
+  // Move text smoothly
+  const x = W - ((i * (totalMove / frames)) % totalMove);
+  ctx.fillText(text, x, H / 2 + 16);
+
+  encoder.addFrame(ctx);
+}
+
+// Finalize
+encoder.finish();
+console.log('✅ banner.gif created successfully 🎉');
