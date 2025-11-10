@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/public/css/dashboard.css">
+</head>
+<body>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="/public/images/logo.svg" alt="logo" style="height:36px"/>
+      <div style="flex:1"></div>
+      <div class="badge">All-in-One • Instant</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="sub">Live System Overview</div>
+          <div class="big" id="uptimeTitle">—</div>
+        </div>
+        <div style="text-align:right">
+          <div class="sub">Local (Asia/Dhaka)</div>
+          <div id="dateTime">—</div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:14px">
+        <div class="stat"><h3>Uptime</h3><p id="uptime">—</p></div>
+        <div class="stat"><h3>Memory (RSS)</h3><p id="mem">— MB</p></div>
+        <div class="stat"><h3>CPU</h3><p id="cpu">—</p></div>
+        <div class="stat full"><h3>System</h3><p id="system">—</p></div>
+        <div class="stat"><h3>Cores</h3><p id="cores">—</p></div>
+        <div class="stat"><h3>Node</h3><p id="node">—</p></div>
+        <div class="stat"><h3>Ping (client)</h3><p id="ping">— ms</p></div>
+      </div>
+
+      <div class="footer">
+        <div>⚡ Powered by <strong>Meheraz</strong></div>
+        <div id="health">Status: —</div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;color:#94a3b8;font-size:13px">Tip: Open this on your server. Auto-refresh every 1s.</div>
+  </div>
+
+  <script src="/public/js/dashboard.js"></script>
+</body>
+</html>
