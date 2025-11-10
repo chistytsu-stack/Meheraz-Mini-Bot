@@ -1,0 +1,73 @@
+{
+  "PREFIX": ".",
+  "BOTNAME": "𝑴𝑬𝑯𝑬𝑹𝑨𝒁 𝑴𝑰𝑹𝑨𝑰 𝑩𝑶𝑻 💫",
+  "AUTHOR": "Meheraz Islam Chisty",
+  "VERSION": "2.0.0",
+  "ADMIN": [
+    "100023789902793"
+  ],
+  "LANGUAGE": "en",
+  "APPSTATE_FILE": "account.dev.txt",
+  "DATABASE": {
+    "TYPE": "local",
+    "PATH": "./data/database.json",
+    "AUTOSAVE": true,
+    "SAVE_INTERVAL_MINUTES": 10
+  },
+  "UPDATER": {
+    "AUTO_UPDATE": true,
+    "CHECK_INTERVAL_HOURS": 12,
+    "UPDATE_SCRIPT": "update.js"
+  },
+  "BACKUP": {
+    "ENABLE_BACKUP": true,
+    "AUTO_BACKUP": true,
+    "BACKUP_INTERVAL_HOURS": 6,
+    "BACKUP_PATH": "./backups/",
+    "RESTORE_SCRIPT": "restoreBackup.js"
+  },
+  "DASHBOARD": {
+    "ENABLED": true,
+    "PORT": 3000,
+    "AUTO_OPEN": false,
+    "SHOW_STATS": true
+  },
+  "LOGGING": {
+    "ENABLE_CONSOLE": true,
+    "ENABLE_FILE": true,
+    "LOG_PATH": "./logs/bot.log",
+    "ERROR_PATH": "./logs/error.log"
+  },
+  "SYSTEM": {
+    "AUTO_RESTART": true,
+    "RESTART_INTERVAL_HOURS": 12,
+    "MAX_MEMORY_MB": 1024,
+    "CHECK_INTERVAL_SEC": 60
+  },
+  "MESSAGES": {
+    "BOT_START": "✨ 𝑴𝒆𝒉𝒆𝒓𝒂𝒛 𝑩𝒐𝒕 𝑰𝒔 𝑵𝒐𝒘 𝑶𝒏𝒍𝒊𝒏𝒆 💫",
+    "BOT_STOP": "⚡ 𝑩𝒐𝒕 𝑺𝒉𝒖𝒕 𝑫𝒐𝒘𝒏 𝑩𝒚 𝑴𝒆𝒉𝒆𝒓𝒂𝒛",
+    "ERROR": "⚠️ Something went wrong — Please try again later!",
+    "HELLO": "👋 Hey there! I'm alive 💫 How can I help you?"
+  },
+  "STYLE": {
+    "MESSAGE_THEME": "Meheraz",
+    "BORDER_STYLE": "✦━━━━━━━━━━━━━━━━━━━━━✦",
+    "USE_ANIMATION": true
+  },
+  "COMMANDS": {
+    "ENABLE_ALL": true,
+    "ONLY_ADMIN_BOX": false,
+    "DISABLED_LIST": []
+  },
+  "NOTIFY": {
+    "SEND_ON_START": true,
+    "SEND_ON_RESTART": true,
+    "ADMIN_ALERT": true
+  },
+  "CUSTOM": {
+    "UptimeDisplay": true,
+    "FastResponse": true,
+    "DashboardSync": true
+  }
+}
